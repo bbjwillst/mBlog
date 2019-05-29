@@ -20,5 +20,6 @@ from mainsite.views import homepage
 
 urlpatterns = [
     path('', homepage),
+    path(r'^post/(\w+)$', showpost),
     path('admin/', admin.site.urls),
 ]
