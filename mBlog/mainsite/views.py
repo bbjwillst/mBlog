@@ -17,7 +17,7 @@ def homepage(request):
 def showpost(request, slug):
     template = get_template('post.html')
     try:
-        post = Post.objects.all(slug=slug)
+        post = Post.objects.get(slug=slug)
         if post is not None:
             html = template.render(locals())
         return HttpResponse(html)
