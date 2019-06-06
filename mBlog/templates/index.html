@@ -2,12 +2,23 @@
 {% extends 'base.html' %}
 {% block title %} Welcome to mBlog {% endblock %}
 {% block headmessage %}
-<h3 style="font-family: 'Courier New';">本站文章列表</h3>
+    <h3 style="font-family: 'Courier New',sans-serif;">本站文章列表</h3>
 {% endblock %}
 {% block content %}
     {% for post in posts %}
-        <p style="font-family: 'Courier New';font-size: 14pt;font-weight: bold;">
-            <a href="/post/{{ post.slug }}">{{ post.title }}</a>
-        </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p style="font-family: 'Courier New', sans-serif;font-size:14pt;font-weight:bold;">
+                    <a href="/post/{{ post.slug }}">{{ post.title }}</a>
+                </p>
+            </div>
+            <div class="panel-body" style="background-color: #ffffdd">
+                <p>{{ post.body | truncatechars:40 }}</p>
+            </div>
+            <div class="panel-footer" style="background-color:#efefef">
+                <p>发布时间：{{ post.pub_date | date:"Y M d, h:m:s" }}</p>
+            </div>
+        </div>
+        <br>
     {% endfor %}
 {% endblock %}
